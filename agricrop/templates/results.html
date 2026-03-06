@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>AgriPulse Results</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+background:#eef7e7;
+text-align:center;
+}
+
+header{
+background:#2e7d32;
+color:white;
+padding:20px;
+font-size:28px;
+}
+
+.result-card{
+background:white;
+width:60%;
+margin:auto;
+margin-top:25px;
+padding:25px;
+border-radius:12px;
+box-shadow:0 5px 12px rgba(0,0,0,0.3);
+}
+
+.progress{
+width:100%;
+background:#ddd;
+border-radius:10px;
+overflow:hidden;
+margin-top:10px;
+}
+
+.progress-bar{
+height:25px;
+background:#4caf50;
+}
+
+.optimal{
+color:green;
+font-weight:bold;
+}
+
+.deficient{
+color:orange;
+font-weight:bold;
+}
+
+.critical{
+color:red;
+font-weight:bold;
+}
+
+.ai-box{
+background:#f1f8e9;
+padding:15px;
+border-radius:8px;
+margin-top:15px;
+}
+
+button{
+margin-top:25px;
+padding:12px 18px;
+background:#2e7d32;
+color:white;
+border:none;
+border-radius:6px;
+cursor:pointer;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+📊 AgriPulse Soil Health Dashboard
+</header>
+
+{% for r in results %}
+
+<div class="result-card">
+
+<h2>🪨 Soil ID: {{ r.soil_id }}</h2>
+
+<p><b>🌱 Crop:</b> {{ r.target_crop }}</p>
+
+<p><b>⚕ Health:</b> {{ r.health_metrics.overall_health }}</p>
+
+<p><b>⚠ Deficiencies:</b> {{ r.health_metrics.critical_deficiencies }}</p>
+
+<p><b>💊 Fertilizer Plan:</b> {{ r.recommendation.fertilizer_plan }}</p>
+
+<h3>📈 Suitability Score: {{ r.recommendation.suitability_score }}%</h3>
+
+<div class="progress">
+<div class="progress-bar" style="width: {{ r.recommendation.suitability_score }}%"></div>
+</div>
+
+<div class="ai-box">
+
+🤖 <b>AI Insight</b><br><br>
+
+{{ r.ai_explanation }}
+
+</div>
+
+</div>
+
+{% endfor %}
+
+<a href="/"><button>🔙 Analyze Another Soil</button></a>
+
+</body>
+</html>

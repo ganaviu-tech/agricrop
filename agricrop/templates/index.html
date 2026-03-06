@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>AgriPulse AI 🌾</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+background-image:url("https://images.unsplash.com/photo-1500382017468-9049fed747ef");
+background-size:cover;
+background-attachment:fixed;
+color:white;
+}
+
+.overlay{
+background:rgba(0,0,0,0.6);
+min-height:100vh;
+padding:40px;
+text-align:center;
+}
+
+h1{
+font-size:40px;
+}
+
+.card{
+background:white;
+color:black;
+padding:25px;
+border-radius:12px;
+width:350px;
+margin:20px auto;
+box-shadow:0 6px 15px rgba(0,0,0,0.4);
+}
+
+input,select{
+padding:10px;
+margin:8px;
+width:85%;
+border-radius:6px;
+border:1px solid #ccc;
+}
+
+button{
+background:#2e7d32;
+color:white;
+border:none;
+padding:12px 20px;
+border-radius:6px;
+font-size:16px;
+cursor:pointer;
+}
+
+button:hover{
+background:#1b5e20;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="overlay">
+
+<h1>🌾 AgriPulse AI Soil Intelligence</h1>
+<p>Smart Soil Analysis for Sustainable Farming</p>
+
+<div class="card">
+
+<h2>🧪 Manual Soil Entry</h2>
+
+<form action="/analyze_manual" method="POST">
+
+<select name="crop">
+<option value="TOMATO">🍅 Tomato</option>
+<option value="WHEAT">🌾 Wheat</option>
+<option value="RICE">🍚 Rice</option>
+<option value="MAIZE">🌽 Maize</option>
+</select>
+
+<input type="number" step="any" name="N" placeholder="Nitrogen (N)">
+<input type="number" step="any" name="P" placeholder="Phosphorus (P)">
+<input type="number" step="any" name="K" placeholder="Potassium (K)">
+<input type="number" step="any" name="pH" placeholder="Soil pH">
+
+<button type="submit">🚀 Analyze Soil</button>
+
+</form>
+
+</div>
+
+
+<div class="card">
+
+<h2>📂 Upload Soil Dataset</h2>
+
+<form action="/upload_csv" method="POST" enctype="multipart/form-data">
+
+<select name="crop">
+<option value="TOMATO">🍅 Tomato</option>
+<option value="WHEAT">🌾 Wheat</option>
+<option value="RICE">🍚 Rice</option>
+<option value="MAIZE">🌽 Maize</option>
+</select>
+
+<br><br>
+
+<input type="file" name="file">
+
+<br><br>
+
+<button type="submit">📊 Process CSV</button>
+
+</form>
+
+</div>
+
+</div>
+
+</body>
+</html>
